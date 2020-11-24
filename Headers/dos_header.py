@@ -16,7 +16,7 @@ class Dos:
             sys.exit()
 
     def _pe_header(self):
-        self.file.skip(60)
+        self.file.seek(60)
         pe_header = self.file.read(4)
         return int.from_bytes(pe_header, 'little')
 

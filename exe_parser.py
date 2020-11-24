@@ -1,5 +1,6 @@
 from arguments import Arguments
 from Headers.dos_header import Dos
+from Headers.pe_header import PE
 
 
 class ExeFile:
@@ -19,6 +20,7 @@ class ExeFile:
         dos = Dos(self._exe_file)
         print('PE Header:', dos.pe_header)
         print('DOS_Stub Program:', dos.dos_stub_program)
+        pe = PE(self._exe_file)
         self._close_file()
 
 
