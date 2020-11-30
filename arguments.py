@@ -1,7 +1,6 @@
 import argparse
 import sys
 import os
-# 'Git-2.26.2-64-bit.exe', 'AtomSetup-x64.exe', 'rufus-3.12.exe'
 
 
 class Arguments:
@@ -12,17 +11,17 @@ class Arguments:
     @staticmethod
     def _arg_parse():
         d = {
-            'git': 'Git-2.26.2-64-bit.exe',
-            'rufus': 'rufus-3.12.exe',
-            'atom': 'AtomSetup-x64.exe',
-            'python': 'python-3.9.0-amd64.exe'
+            'git': '.exe/Git-2.26.2-64-bit.exe',
+            'rufus': '.exe/rufus-3.12.exe',
+            'atom': '.exe/AtomSetup-x64.exe',
+            'python': '.exe/python-3.9.0-amd64.exe',
+            's': '.exe/setup.exe'
         }
-        exe = d['python']
+        exe = d['git']
         parser = argparse.ArgumentParser(description='exe parser')
         parser.add_argument('-path', type=str, dest='exe_file',
                             default=exe, help='path to exe file.')
         return parser.parse_args()
-# b'\x0b\x01'
 
 
 class Path:

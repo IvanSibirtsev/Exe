@@ -1,6 +1,7 @@
 from arguments import Arguments
-from Headers.dos_header import Dos
-from Headers.pe_header import PE
+from Headers.dos import Dos
+from Headers.PE.portable_executable import PortableExecutable
+from cli import ConsoleLineInterface
 
 
 class ExeFile:
@@ -18,10 +19,9 @@ class ExeFile:
 
     def parse(self):
         dos = Dos(self._exe_file)
-        print('PE Header:', dos.pe_header)
-        print('DOS_Stub Program:', dos.dos_stub_program)
-        pe = PE(self._exe_file)
+        pe = PortableExecutable(self._exe_file, self._args.exe_file)
         self._close_file()
+        cli = ConsoleLineInterface('', pe.get_fields())
 
 
 def main():

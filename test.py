@@ -1,7 +1,4 @@
 import unittest
-from Headers import config, dos_header, pe_header
-import arguments
-import exe_parser
 
 
 class MyTestCase(unittest.TestCase):
