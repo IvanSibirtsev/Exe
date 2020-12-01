@@ -3,7 +3,7 @@ from rva import RVA
 from Table.tables import Tables
 from Headers.PE.Headers.file_header import FileHeader
 from Headers.PE.Headers.optional_header import OptionalHeader
-from Headers.PE.Headers.section_headers import SectionTable
+from Headers.PE.Headers.section_header import SectionTable
 
 
 class PortableExecutable:

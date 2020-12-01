@@ -1,5 +1,6 @@
-from Utils.byte_pareser import int_little, cli, get_characteristic
-from Utils.config import DLL_CHARACTERISTICS, SUBSYSTEM
+from Utils.byte_pareser import int_little
+from Utils.config import SUBSYSTEM
+from Utils.characteristics import CharacteristicsDefiner
 
 class WindowsSpecific:
     def __init__(self, data, magic):
@@ -20,7 +21,7 @@ class WindowsSpecific:
             start = 24
         data = self._data
         fields = {
-            'image base:': int_little(data[start:start + offset]),
+            'image base': int_little(data[start:start + offset]),
             'section alignment': int_little(data[32:36]),
             'file alignment': int_little(data[36:40]),
             'operating system versions': (int_little(data[40:42]),
@@ -60,4 +61,4 @@ class WindowsSpecific:
     @staticmethod
     def _parse_characteristics(data):
         data = int_little(data)
-        return get_characteristic(data, DLL_CHARACTERISTICS)
+        return CharacteristicsDefiner(data, 'windows').get_characteristics()

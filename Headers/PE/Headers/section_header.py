@@ -1,4 +1,5 @@
-from Utils.byte_pareser import int_little, plus_cli
+from Utils.byte_pareser import int_little
+from Utils.characteristics import CharacteristicsDefiner
 
 
 class SectionTable:
@@ -18,6 +19,7 @@ class SectionTable:
     def get_fields(self):
         return self._section_table
 
+
 class Section:
     def __init__(self, data, pos):
         self._data = data
@@ -30,7 +32,7 @@ class Section:
     def _parse(self):
         data = self._data
         pos = self._pos
-        data = {
+        fields = {
             'virtual size': int_little(data[pos + 8:pos + 12]),
             'virtual address': int_little(data[pos + 12:pos + 16]),
             'size of raw data': int_little(data[pos + 16:pos + 20]),
@@ -39,6 +41,12 @@ class Section:
             'pointer to line numbers': int_little(data[pos + 28:pos + 32]),
             'number of relocations': int_little(data[pos + 32:pos + 34]),
             'number of number lines': int_little(data[pos + 34:pos + 36]),
-            'characteristics': int_little(data[pos + 36:pos + 40])
+            'characteristics':  self._parse_characteristics(data[pos + 36:pos + 40])
         }
-        return data
+
+        return fields
+
+    @staticmethod
+    def _parse_characteristics(data):
+        flags = int_little(data)
+        return CharacteristicsDefiner(flags, 'section').get_characteristics()

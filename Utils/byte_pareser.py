@@ -30,14 +30,4 @@ def get_line(f, address):
     try:
         return b''.join(letters).decode('utf-8')
     except LookupError:
-        return ""
-
-def get_characteristic(data, const):
-    bin_str = bin(data).zfill(16)
-    bin_str = [bin_str[-i - 1] == '1' for i in range(16)]
-    ans = []
-    for a, characteristic in zip(bin_str, const):
-        if a:
-            ans.append(characteristic)
-    return ans
-
+        return ''

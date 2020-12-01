@@ -21,7 +21,8 @@ class ExeFile:
         dos = Dos(self._exe_file)
         pe = PortableExecutable(self._exe_file, self._args.exe_file)
         self._close_file()
-        cli = ConsoleLineInterface('', pe.get_fields())
+        cli = ConsoleLineInterface(self._args, pe.get_fields())
+        cli.print()
 
 
 def main():

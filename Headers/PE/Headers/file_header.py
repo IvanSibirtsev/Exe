@@ -1,7 +1,8 @@
 import struct
 from datetime import datetime
-from Utils.config import MACHINES_TYPES, CHARACTERISTICS
-from Utils.byte_pareser import cli, int_little, get_characteristic
+from Utils.config import MACHINES_TYPES
+from Utils.byte_pareser import int_little
+from Utils.characteristics import CharacteristicsDefiner
 
 class FileHeader:
     def __init__(self, data):
@@ -47,4 +48,4 @@ class FileHeader:
 
     @staticmethod
     def _characteristics(data):
-        return get_characteristic(data, CHARACTERISTICS)
+        return CharacteristicsDefiner(data, 'file').get_characteristics()

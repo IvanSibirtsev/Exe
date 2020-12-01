@@ -1,11 +1,4 @@
-from Utils.byte_pareser import get_line, hex_from_bytes, int_little
-
-
-def string_functions(element):
-    return "\n".join(
-        map(lambda func: f"\t{hex_from_bytes(func[0], -1)[2:]:>12} {func[1]}",
-            element['functions']))
-
+from Utils.byte_pareser import get_line, int_little
 
 class ImportTable:
     _ZERO_STRUCT = b'\x00' * 20
