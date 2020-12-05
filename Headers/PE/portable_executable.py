@@ -57,6 +57,7 @@ class PortableExecutable:
         return import_table
 
     def _merge_all_fields(self):
+        self._fields['path'] = self._path
         self._fields['file header'] = self._file_header.get_fields()
         self._fields['optional header'] = self._optional_header.get_fields()
         self._fields['section table'] = self._section_table.get_fields()

@@ -1,11 +1,12 @@
 class ConsoleLineInterface:
     _SPECIAL_FIELDS = ['Functions']
 
-    def __init__(self, args, data):
+    def __init__(self, args):
         self._args = args
-        self._data = data
+        self._data = None
 
-    def print(self):
+    def print(self, data):
+        self._data = data
         if self._args.file_header:
             self._print_file_header()
         if self._args.optional_header:
@@ -51,14 +52,13 @@ class ConsoleLineInterface:
             self._print_header_and_fields(name, lib, 1)
 
     def _print_header_and_fields(self, name, data, deep):
-        print('\t' * deep, name, ':', sep='')
+        print('\t' * deep, name.lower(), ':', sep='')
         for field in data:
             if field in self._SPECIAL_FIELDS:
                 self._print_header_and_fields(field, data[field], deep + 1)
                 continue
             value = normalize(data[field])
             print('\t' * (deep + 1), field, ': ', value, sep='')
-
 
 
 def normalize(value):

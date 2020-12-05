@@ -33,7 +33,7 @@ class ImportTable:
 
     def _add(self, result, file, data):
         result.append({
-                'Characteristics': int_little(data[:4]),
+                'Import Lookup Table RVA': int_little(data[:4]),
                 'Time/date stamp': int_little(data[4:8]),
                 'Forwarder chain': int_little(data[8:12]),
                 'Name':

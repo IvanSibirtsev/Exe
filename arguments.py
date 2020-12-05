@@ -7,6 +7,7 @@ class Arguments:
     def __init__(self):
         self._parser = self._arg_parse()
         self.exe_file = Path(self._parser.exe_file).path
+        self.disassemble = self._parser.disassemble
         self.file_header = self._parser.file_header
         self.optional_header = self._parser.optional_header
         self.section_header = self._parser.section_header
@@ -22,13 +23,16 @@ class Arguments:
             'git': '.exe/Git-2.26.2-64-bit.exe',
             'rufus': '.exe/rufus-3.12.exe',
             'atom': '.exe/AtomSetup-x64.exe',
-            'python': '.exe/python-3.9.0-amd64.exe',
+            'python': 'python-3.9.0-amd64.exe',
             's': '.exe/setup.exe'
         }
-        exe= d['atom']
+        exe = d['python']
         parser = argparse.ArgumentParser(description='exe parser')
         parser.add_argument('-path', type=str, dest='exe_file',
                             default=exe, help='path to exe file.')
+        parser.add_argument('-d', '--disassemble', dest='disassemble',
+                            action='store_true', default=False,
+                            help='start to disassemble sections.')
         parser.add_argument('-f', '--file-header',action='store_true',
                             dest='file_header',
                             default=False, help='print file header')
