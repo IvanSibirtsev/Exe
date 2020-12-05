@@ -72,5 +72,5 @@ class Path:
             sys.exit()
         extension = os.path.splitext(self.path)[1]
         if extension not in ['.exe', '.dll']:
-            print(f'Work only with exe =. No {extension}')
+            print(f'Work only with exe or dll. No {extension}')
             sys.exit()

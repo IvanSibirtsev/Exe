@@ -24,6 +24,5 @@ class Disassembler:
         position = self._section_table[section_name]['pointer to raw data']
         self._offset = position
         with open(self._path, 'rb') as file:
-            print('Position', position, 'Size', size)
             file.seek(position)
             return file.read(size)

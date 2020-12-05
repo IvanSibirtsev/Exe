@@ -1,20 +1,7 @@
-from cmd import Cmd
-import sys
+from CUI.core.console import Console
+from CUI.core.command import Command
+from CUI.core.action import Action
 from disassembler import Disassembler
-from CUI.command import Command
-from CUI.action import Action
-
-
-class Console(Cmd):
-    def __init__(self):
-        Cmd.__init__(self)
-
-    def cmdloop(self, intro=None):
-        try:
-            Cmd.cmdloop(self, intro)
-        except KeyboardInterrupt:
-            print('Exit.')
-            sys.exit()
 
 
 class ConsoleUserInterface(Console):
