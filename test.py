@@ -3,13 +3,13 @@ import io
 import sys
 import unittest
 import datetime
-from CUI.core.command import Command
-from CUI.core.action_types import ActionTypes
-from CUI.core.action import Action
-from Headers.PE.portable_executable import PortableExecutable
-from Headers.dos import Dos
+from core.CUI.core.command import Command
+from core.CUI.core.action_types import ActionTypes
+from core.CUI.core.action import Action
+from core.Headers.PE.portable_executable import PortableExecutable
+from core.Headers.dos import Dos
 import pydump
-from arguments import Path
+from core.Utils.arguments import Path
 
 
 class TestCommand(unittest.TestCase):
@@ -46,13 +46,14 @@ class TestAction(unittest.TestCase):
         Action(dictionary).do(data)
         self.assertEqual(True, os.path.exists('for_test.txt'))
         with open('for_test.txt', 'r') as file:
-            writed_data = file.read()
-        self.assertEqual(writed_data, 'd\na\nt\na\n')
+            wrote_data = file.read()
+        self.assertEqual(wrote_data, 'd\na\nt\na\n')
+        os.remove('for_test.txt')
 
 
 class TestExe(unittest.TestCase):
     def setUp(self):
-        self.tested_file = 'PEview.exe'
+        self.tested_file = 'ForTests/PEview.exe'
         git = open(self.tested_file, 'rb')
         dos = Dos(git)
         self.exe_file = PortableExecutable(git, self.tested_file).get_fields()
@@ -91,8 +92,10 @@ class TestExe(unittest.TestCase):
             'data directories': [
                 zeroes, (b'dB\x01\x00', b'\xa0\x00\x00\x00'),
                 (b'\x00\x00\x01\x00', b'\x00;\x00\x00'),
-                zeroes, zeroes, zeroes, zeroes, zeroes, zeroes, zeroes, zeroes, zeroes,
-                (b'\x04C\x01\x00', b'\xb4\x01\x00\x00'), zeroes, zeroes, zeroes],
+                zeroes, zeroes, zeroes, zeroes, zeroes, zeroes, zeroes, zeroes,
+                zeroes,
+                (b'\x04C\x01\x00', b'\xb4\x01\x00\x00'), zeroes, zeroes,
+                zeroes],
             'standard': {
                 'address of empty point': 4096,
                 'base of code': 4096,
@@ -162,9 +165,8 @@ class TestExe(unittest.TestCase):
         self.assertEqual(import_table[0], fields)
 
     def test_export_table_for_dll(self):
-        file = open('unistim.dll', 'rb')
-        dos = Dos(file)
-        dll_file = PortableExecutable(file, 'unistim.dll').get_fields()
+        dll = 'ForTests/unistim.dll'
+        dll_file = pydump.ExeFile(dll).get_information()
         export_table = dll_file['export table']
         fields = {
             'addresses of functions':
@@ -184,7 +186,6 @@ class TestExe(unittest.TestCase):
             'time date stamp': '0xFFFFFFFF',
             'version': '0.0'}
         self.assertEqual(export_table, fields)
-        file.close()
 
 
 class TestArguments(unittest.TestCase):
@@ -193,10 +194,10 @@ class TestArguments(unittest.TestCase):
         sys.stdout = buffer = io.StringIO()
         incorrect_path = 'README.md'
         with self.assertRaises(SystemExit):
-            path = Path(incorrect_path)
+            Path(incorrect_path)
         incorrect_path = 'rngonvurtbv.zip'
         with self.assertRaises(SystemExit):
-            path = Path(incorrect_path)
+            Path(incorrect_path)
         sys.stdout = old_stdout
         output = buffer.getvalue()
         self.assertEqual('Work only with exe or dll. No .md\n'

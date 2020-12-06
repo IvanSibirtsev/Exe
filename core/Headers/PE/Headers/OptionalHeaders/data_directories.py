@@ -16,8 +16,8 @@ class DataDirectories:
         if self._magic == 'PE32':
             start = 96
         data_directories = [(self._data[i * 8 + start: i * 8 + start + 4],
-                            self._data[i * 8 + start + 4: i * 8 + start + 8]
-                           ) for i in range(self._number_of_rva_and_sizes)]
+                             self._data[i * 8 + start + 4: i * 8 + start + 8]
+                             ) for i in range(self._number_of_rva_and_sizes)]
         return data_directories
 
     def get_fields(self):

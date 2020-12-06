@@ -1,5 +1,5 @@
-from Utils.byte_pareser import int_little
-from Utils.characteristics import CharacteristicsDefiner
+from core.Utils.byte_pareser import int_little
+from core.Utils.characteristics import CharacteristicsDefiner
 
 
 class SectionTable:
@@ -41,7 +41,8 @@ class Section:
             'pointer to line numbers': int_little(data[pos + 28:pos + 32]),
             'number of relocations': int_little(data[pos + 32:pos + 34]),
             'number of number lines': int_little(data[pos + 34:pos + 36]),
-            'characteristics':  self._parse_characteristics(data[pos + 36:pos + 40])
+            'characteristics': self._parse_characteristics(
+                data[pos + 36:pos + 40])
         }
 
         return fields

@@ -11,7 +11,7 @@ def hex_from_bytes(byte_str, symbols_len=0):
     if not byte_str:
         return ''
 
-    result = hex(int.from_bytes(byte_str, 'little'))[2:]\
+    result = hex(int.from_bytes(byte_str, 'little'))[2:] \
         .upper().zfill(symbols_len)
     if len(result) % 2 == 1 and symbols_len == 0:
         result = '0' + result

@@ -1,14 +1,14 @@
-from Utils.config import CHARACTERISTICS, DLL_CHARACTERISTICS, SECTION_FLAGS
+from core.Utils.config import CHARACTERISTICS, DLL_CHARACTERISTICS, SECTION_FLAGS
 
 
 class CharacteristicsDefiner:
     _hex = ['a', 'b', 'c', 'd', 'e', 'f']
     _NUMBER_SIMPLIFY = {
-            '3': (1, 2), '5': (1, 4), '6': (2, 4),
-            '7': (1, 2, 4), '9': (1, 8), 'a': (2, 8),
-            'b': (1, 2, 8), 'c': (4, 8), 'd': (1, 4, 8),
-            'e': (2, 4, 8), 'f': (1, 2, 4, 8)
-        }
+        '3': (1, 2), '5': (1, 4), '6': (2, 4),
+        '7': (1, 2, 4), '9': (1, 8), 'a': (2, 8),
+        'b': (1, 2, 8), 'c': (4, 8), 'd': (1, 4, 8),
+        'e': (2, 4, 8), 'f': (1, 2, 4, 8)
+    }
     _NAME_LEN = {
         'file': 4,
         'windows': 4,

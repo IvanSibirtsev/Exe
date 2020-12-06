@@ -1,6 +1,7 @@
-from Utils.byte_pareser import int_little
-from Utils.config import SUBSYSTEM
-from Utils.characteristics import CharacteristicsDefiner
+from core.Utils.byte_pareser import int_little
+from core.Utils.config import SUBSYSTEM
+from core.Utils.characteristics import CharacteristicsDefiner
+
 
 class WindowsSpecific:
     def __init__(self, data, magic):

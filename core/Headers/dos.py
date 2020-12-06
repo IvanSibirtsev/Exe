@@ -1,5 +1,5 @@
 import sys
-from Utils.byte_pareser import int_little
+from core.Utils.byte_pareser import int_little
 
 
 class Dos:

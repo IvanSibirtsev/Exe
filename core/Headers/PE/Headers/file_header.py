@@ -1,8 +1,9 @@
 import struct
 from datetime import datetime
-from Utils.config import MACHINES_TYPES
-from Utils.byte_pareser import int_little
-from Utils.characteristics import CharacteristicsDefiner
+from core.Utils.config import MACHINES_TYPES
+from core.Utils.byte_pareser import int_little
+from core.Utils.characteristics import CharacteristicsDefiner
+
 
 class FileHeader:
     def __init__(self, data):

@@ -1,6 +1,6 @@
-from Headers.PE.Headers.OptionalHeaders.standard import Standard
-from Headers.PE.Headers.OptionalHeaders.windows_specific import WindowsSpecific
-from Headers.PE.Headers.OptionalHeaders.data_directories import DataDirectories
+from core.Headers.PE.Headers.OptionalHeaders.standard import Standard
+from core.Headers.PE.Headers.OptionalHeaders.windows_specific import WindowsSpecific
+from core.Headers.PE.Headers.OptionalHeaders.data_directories import DataDirectories
 
 
 class OptionalHeader:

@@ -1,5 +1,6 @@
-from Table.export_table import ExportTable
-from Table.import_table import ImportTable
+from core.Table.export_table import ExportTable
+from core.Table.import_table import ImportTable
+
 
 class Tables:
     def __init__(self, rva, path, standard, data_directories):

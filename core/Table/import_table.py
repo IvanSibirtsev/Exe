@@ -1,4 +1,5 @@
-from Utils.byte_pareser import get_line, int_little
+from core.Utils.byte_pareser import get_line, int_little
+
 
 class ImportTable:
     _ZERO_STRUCT = b'\x00' * 20
@@ -33,13 +34,13 @@ class ImportTable:
 
     def _add(self, result, file, data):
         result.append({
-                'Import Lookup Table RVA': int_little(data[:4]),
-                'Time/date stamp': int_little(data[4:8]),
-                'Forwarder chain': int_little(data[8:12]),
-                'Name':
-                    get_line(file, self._rva.rva_to_raw(data[12:16])[1]),
-                'Thunk table': int_little(data[16:20])
-            })
+            'Import Lookup Table RVA': int_little(data[:4]),
+            'Time/date stamp': int_little(data[4:8]),
+            'Forwarder chain': int_little(data[8:12]),
+            'Name':
+                get_line(file, self._rva.rva_to_raw(data[12:16])[1]),
+            'Thunk table': int_little(data[16:20])
+        })
         rva = self._rva.rva_to_raw(result[-1]['Thunk table'])[1]
         result[-1]['Functions'] = self._get_functions(file, rva)
 

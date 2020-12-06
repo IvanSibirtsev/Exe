@@ -1,4 +1,5 @@
-from Utils.byte_pareser import int_little
+from core.Utils.byte_pareser import int_little
+
 
 class Standard:
     def __init__(self, data):

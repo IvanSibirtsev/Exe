@@ -1,4 +1,4 @@
-from CUI.core.action_types import ActionTypes
+from core.CUI.core.action_types import ActionTypes
 
 
 class Action:

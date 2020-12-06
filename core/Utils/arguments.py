@@ -17,14 +17,13 @@ class Arguments:
 
     @staticmethod
     def _arg_parse():
-        exe = 'unistim.dll'
-        exe = 'python-3.9.0-amd64.exe'
-        d =  {
+        d = {
             'git': '.exe/Git-2.26.2-64-bit.exe',
             'rufus': '.exe/rufus-3.12.exe',
             'atom': '.exe/AtomSetup-x64.exe',
-            'python': 'python-3.9.0-amd64.exe',
-            's': '.exe/setup.exe'
+            'python': '.exe/python-3.9.0-amd64.exe',
+            's': '.exe/setup.exe',
+            'dll': 'ForTests/unistim.dll'
         }
         exe = d['python']
         parser = argparse.ArgumentParser(description='exe parser')
@@ -33,7 +32,7 @@ class Arguments:
         parser.add_argument('-d', '--disassemble', dest='disassemble',
                             action='store_true', default=False,
                             help='start to disassemble sections.')
-        parser.add_argument('-f', '--file-header',action='store_true',
+        parser.add_argument('-f', '--file-header', action='store_true',
                             dest='file_header',
                             default=False, help='print file header')
         parser.add_argument('-o', '--optional-header', action='store_true',

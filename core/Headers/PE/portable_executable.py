@@ -1,9 +1,9 @@
 import sys
-from rva import RVA
-from Table.tables import Tables
-from Headers.PE.Headers.file_header import FileHeader
-from Headers.PE.Headers.optional_header import OptionalHeader
-from Headers.PE.Headers.section_header import SectionTable
+from core.rva import RVA
+from core.Table.tables import Tables
+from core.Headers.PE.Headers.file_header import FileHeader
+from core.Headers.PE.Headers.optional_header import OptionalHeader
+from core.Headers.PE.Headers.section_header import SectionTable
 
 
 class PortableExecutable:

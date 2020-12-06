@@ -1,4 +1,4 @@
-from CUI.core.action_types import ActionTypes, ActionsWithFile
+from core.CUI.core.action_types import ActionTypes, ActionsWithFile
 
 
 class Command:

@@ -1,4 +1,4 @@
-from Utils.byte_pareser import int_little, hex_from_bytes, get_line
+from core.Utils.byte_pareser import int_little, hex_from_bytes, get_line
 
 
 class ExportTable:

@@ -1,7 +1,7 @@
-from CUI.core.console import Console
-from CUI.core.command import Command
-from CUI.core.action import Action
-from disassembler import Disassembler
+from core.CUI.core.console import Console
+from core.CUI.core.command import Command
+from core.CUI.core.action import Action
+from core.disassembler import Disassembler
 
 
 class ConsoleUserInterface(Console):

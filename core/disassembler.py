@@ -15,8 +15,10 @@ class Disassembler:
 
     def _get_opcodes(self, data):
         opcode = []
-        for (offset, size, instruction, hexdump) in distorm3.DecodeGenerator(self._offset, data, self._options):
-            opcode.append('%.8x: %-40s %s' % (offset, hexdump, instruction.lower()))
+        for (offset, size, instruction, hexdump) in distorm3.DecodeGenerator(
+                self._offset, data, self._options):
+            opcode.append(
+                '%.8x: %-40s %s' % (offset, hexdump, instruction.lower()))
         return opcode
 
     def _get_raw_data(self, section_name):
