@@ -10,6 +10,7 @@ from core.Headers.PE.portable_executable import PortableExecutable
 from core.Headers.dos import Dos
 import pydump
 from core.Utils.arguments import Path
+from ForTests.test_classes import Arguments
 
 
 class TestCommand(unittest.TestCase):
@@ -202,6 +203,17 @@ class TestArguments(unittest.TestCase):
         output = buffer.getvalue()
         self.assertEqual('Work only with exe or dll. No .md\n'
                          f'No such file {incorrect_path}\n', output)
+
+
+class TestPyDump(unittest.TestCase):
+    def test_start_mode(self):
+        args = Arguments()
+        old_stdout = sys.stdout
+        sys.stdout = buffer = io.StringIO()
+        pydump.PyDump(args).start()
+        sys.stdout = old_stdout
+        output = buffer.getvalue()
+        self.assertEqual(True, output != '')
 
 
 if __name__ == '__main__':
